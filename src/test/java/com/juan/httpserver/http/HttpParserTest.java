@@ -21,10 +21,11 @@ class HttpParserTest {
 
     @Test
     void parseHttpRequest() {
-        httpParser.parseHttpRequest(generateValidTestCase());
+        HttpRequest request = httpParser.parseHttpRequest(generateValidGETTestCase());
+        assertEquals(request.getMethod(), HttpMethod.GET);
     }
 
-    private InputStream generateValidTestCase(){
+    private InputStream generateValidGETTestCase(){
 
       String rawData = "GET / HTTP/1.1\r\n" +
               "Host: localhost:8080\r\n" +
